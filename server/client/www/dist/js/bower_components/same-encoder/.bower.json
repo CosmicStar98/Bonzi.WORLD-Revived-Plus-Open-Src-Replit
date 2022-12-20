@@ -1,0 +1,53 @@
+{
+  "name": "same-encoder",
+  "version": "1.1.5",
+  "authors": [
+    "Aaron Miller <me@aaron-miller.me>"
+  ],
+  "description": "Isomorphic encoding for Specific Area Message Encoding (Emergency Alert System) messages",
+  "keywords": [
+    "EBS",
+    "EAS",
+    "emergency-broadcast-system",
+    "emergency-alert-system",
+    "specific-area-message-encoding"
+  ],
+  "main": [
+    "bundle/SAME.js"
+  ],
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "Gruntfile.js",
+    "etc",
+    "examples",
+    "exammples/*",
+    "index.js",
+    "lib",
+    "node_modules",
+    "package.json",
+    "test",
+    "**/.*",
+    "bower_components",
+    "tests"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aaron-em/same-encoder"
+  },
+  "homepage": "https://github.com/aaron-em/same-encoder",
+  "_release": "1.1.5",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.1.5",
+    "commit": "9f2f9f1caaf15c309f2482a557471c1f1ba77cd7"
+  },
+  "_source": "https://github.com/aaron-em/same-encoder.git",
+  "_target": "^1.1.5",
+  "_originalSource": "same-encoder",
+  "_direct": true
+}

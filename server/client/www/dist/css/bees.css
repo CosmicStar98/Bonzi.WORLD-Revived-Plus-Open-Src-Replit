@@ -1,0 +1,67 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-image: url("/img/icons/other/bee-auty.jpg");
+    background-size: cover;
+    background-position: center;
+	background-repeat: no-repeat;
+}
+
+#beetext_cont,
+#newbee {
+    display: table;
+}
+
+#beetext,
+#newbee > span {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+#beetext_cont {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+#beetext {
+    font-size: 6rem;
+    color: #fff;
+    text-shadow: 0 0 2rem rgba(0, 0, 0, 1), 0 0 2rem rgba(0, 0, 0, 1);
+}
+
+#newbee {
+    width: 10rem;
+    height: 5rem;
+    background: #fff;
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    margin-left: -5rem;
+    box-shadow: 0 0 2rem rgba(0, 0, 0, 1);
+    border-radius: 2px;
+    font-size: 1.5rem;
+    z-index: 1;
+}
+
+#newbee > span {
+    pointer-events: none;
+}
+
+#newbee:hover {
+    box-shadow: 0 0 4rem rgba(0, 0, 0, 1);
+    color: #333;
+}
+
+#newbee:active {
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 1);
+    color: #000;
+    background: #aaa;
+}

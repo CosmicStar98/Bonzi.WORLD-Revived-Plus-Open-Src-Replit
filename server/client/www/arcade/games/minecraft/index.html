@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>eagler</title>
+<meta charset="UTF-8" />
+        <meta
+            name="description"
+            content="Eaglercraft is real Minecraft 1.5.2 that you can play in any regular web browser. That includes school chromebooks, it works on all chromebooks. It supports both singleplayer and multiplayer with no extensions."
+        />
+<script type="text/javascript" src="eagswebrtc.js"></script>
+<script type="text/javascript" src="classes.js"></script>
+<script type="text/javascript">
+if(document.location.href.startsWith("file:")) {
+alert("You're not supposed to 'open' this file in your browser. Please upload this folder to your HTTP(s) server and access it via the internet. This is not a bug, please read the documentation");
+}else {
+window.addEventListener("load", async function(){
+const relayId = Math.floor(Math.random() * 3);
+window.eaglercraftOpts = {
+container: "game_frame", assetsURI: "assets.epk", serverWorkerURI: "worker_bootstrap.js", worldsFolder: "TEST",
+assetOverrides: {
+	"records/wait.mp3": "music/records/Wait.mp3",
+	"records/mellohi.mp3": "music/records/Mellohi.mp3",
+	"records/far.mp3": "music/records/Far.mp3",
+	"records/cat.mp3": "music/records/Cat.mp3",
+	"records/ward.mp3": "music/records/Ward.mp3",
+	"records/strad.mp3": "music/records/Strad.mp3",
+	"records/blocks.mp3": "music/records/Blocks.mp3",
+	"records/13.mp3": "music/records/13.mp3",
+	"records/11.mp3": "music/records/11.mp3",
+	"records/chirp.mp3": "music/records/Chirp.mp3",
+	"records/stal.mp3": "music/records/Stal.mp3",
+	"records/mall.mp3": "music/records/Mall.mp3",
+	"title/eagtek2.png": "assets/minecraft/textures/title/eagtek2.png",
+	"title/eagtek-crash.png": "assets/minecraft/textures/title/eagtek-crash.png",
+	"title/enable.png": "assets/minecraft/textures/title/enable.png"
+},
+servers: [
+	{ serverName: "Local Test Server", serverAddress: "localhost:25565", hideAddress: false },
+	{ serverName: "", serverAddress: "wss://web.asspixel.net/CAPixel/", hideAddress: true },
+	{ serverName: "", serverAddress: "wss://play.vanillacraftsmp.org", hideAddress: true },
+	{ serverName: "", serverAddress: "wss://sus.shhnowisnottheti.me", hideAddress: true },
+	{ serverName: "", serverAddress: "wss://play.bongoiscool.tk", hideAddress: true },
+	{ serverName: "", serverAddress: "wss://mess.eu.org/s1/", hideAddress: true },
+	{ serverName: "", serverAddress: "wss://hyper-network.me/server", hideAddress: true },
+	{ serverName: "", serverAddress: "wss://Samsunggamingyt.samsungtah.repl.co/server", hideAddress: true }
+],
+relays: [
+	{ addr: "wss://relay.deev.is/", name: "lax1dude relay #1", primary: relayId == 0 },
+	{ addr: "wss://relay.lax1dude.net/", name: "lax1dude relay #2", primary: relayId == 1 },
+	{ addr: "wss://relay.shhnowisnottheti.me/", name: "ayunami relay #1", primary: relayId == 2 }
+],
+mainMenu: { splashes: ["Welcome to BonziWORLD Revived!", "Bonzi.ga Sucks!", "Behh!", "CosmicBOT is the best!", "Anonymous", "<script>!", "You're a skiddie"], eaglerLogo: false }};
+(function(){
+var q = window.location.search;
+if(typeof q === 'string' && q.startsWith("?")) {
+	q = new URLSearchParams(q);
+	var s = q.get("server");
+	if(s) window.eaglercraftOpts.joinServer = s;
+}
+})();
+main();
+});}
+</script>
+</head>
+<body style="margin: 0px; width: 100%; height: 97vh;overflow-x:hidden;overflow-y:hidden;overflow-x:hidden;overflow-y:hidden;" id="game_frame">
+</body>
+</html>
