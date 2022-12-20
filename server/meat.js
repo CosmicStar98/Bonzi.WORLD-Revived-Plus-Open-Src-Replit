@@ -2,7 +2,7 @@ const log = require("./log.js").log;
 const Ban = require("./ban.js");
 const Utils = require("./utils.js");
 const io = require('./app.js').io;
-const settings = require("./json/settings.json");
+const settings = require(__dirname + "/json/settings.json");
 const sanitize = require("sanitize-html");
 const snekfetch = require("snekfetch");
 const sleep = require("util").promisify(setTimeout);
@@ -13,6 +13,10 @@ const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
 const fs = require('fs');
 
+process.on("uncaughtException", function(err) {
+  console.log(err.stack);
+  throw err;
+});
 
 var onCooldown = false;
 var onloginCooldown = false;

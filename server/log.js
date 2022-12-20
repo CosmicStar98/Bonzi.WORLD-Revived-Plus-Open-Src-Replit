@@ -1,6 +1,6 @@
 const Winston = require('winston');
 const path = require('path');
-const settings = require("./json/settings.json");
+const settings = require(__dirname + "/json/settings.json");
 const fs = require('fs-extra');
 
 var loggers = {};

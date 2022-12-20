@@ -1,6 +1,6 @@
 const log = require('./log.js').log;
 const fs = require('fs-extra');
-const settings = require("./json/settings.json");
+const settings = require(__dirname + "/json/settings.json");
 const io = require('./app.js').io;
 const sanitize = require('sanitize-html');
 
@@ -12,63 +12,68 @@ let hardwarebans;
 let rooms;
 var rooms_table = [];
 
+process.on("uncaughtException", function(err) {
+  console.log(err.stack);
+  throw err;
+});
+
 exports.rooms = rooms;
 exports.rooms_table = rooms_table;
 exports.init = function() {
-    fs.writeFile("./json/bans.json", "{}", { flag: 'wx' }, function(err) {
+    fs.writeFile(__dirname + "/json/bans.json", "{}", { flag: 'wx' }, function(err) {
         if (!err) console.log("Created empty bans list.");
         try {
-            bans = require("./json/bans.json");
+            bans = require(__dirname + "/json/bans.json");
         } catch(e) {
             throw "Could not load bans.json. Check syntax and permissions.";
         }
     });
-    /*fs.writeFile("./json/rooms.json", "[]", { flag: 'w' }, function(err) {
+    /*fs.writeFile(__dirname + "/json/rooms.json", "[]", { flag: 'w' }, function(err) {
         if (!err) console.log("Created empty rooms list.");
         try {
-            rooms = require("./json/rooms.json");
+            rooms = require(__dirname + "/json/rooms.json");
         } catch(e) {
             throw "Could not load rooms.json. Check syntax and permissions.";
         }
     });*/
 	// PROTOTYPE
-    fs.writeFile("./json/accounts.json", "{}", { flag: 'wx' }, function(err) {
+    fs.writeFile(__dirname + "/json/accounts.json", "{}", { flag: 'wx' }, function(err) {
         if (!err) console.log("Created empty accounts list.");
         try {
-            accounts = require("./json/accounts.json");
+            accounts = require(__dirname + "/json/accounts.json");
         } catch(e) {
             throw "Could not load bans.json. Check syntax and permissions.";
         }
     });
-    fs.writeFile("./json/hardware_bans.json", "{}", { flag: 'wx' }, function(err) {
+    fs.writeFile(__dirname + "/json/hardware_bans.json", "{}", { flag: 'wx' }, function(err) {
         if (!err) console.log("Created empty hardware bans list.");
         try {
-            hardwarebans = require("./json/hardware_bans.json");
+            hardwarebans = require(__dirname + "/json/hardware_bans.json");
         } catch(e) {
             throw "Could not load bans.json. Check syntax and permissions.";
         }
     });
-    fs.writeFile("./json/mutes.json", "{}", { flag: 'wx' }, function(err) {
+    fs.writeFile(__dirname + "/json/mutes.json", "{}", { flag: 'wx' }, function(err) {
         if (!err) console.log("Created empty mutes list.");
         try {
-            mutes = require("./json/mutes.json");
+            mutes = require(__dirname + "/json/mutes.json");
         } catch(e) {
             throw "Could not load mutes.json. Check syntax and permissions.";
         }
     });
-    fs.writeFile("./json/logins.json", "{}", { flag: 'wx' }, function(err) {
+    fs.writeFile(__dirname + "/json/logins.json", "{}", { flag: 'wx' }, function(err) {
         if (!err) console.log("Created empty logins list.");
-        logins = require("./json/logins.json");
+        logins = require(__dirname + "/json/logins.json");
     });
-    fs.writeFile("./json/reports.json", "{}", { flag: 'wx' }, function(err) {
+    fs.writeFile(__dirname + "/json/reports.json", "{}", { flag: 'wx' }, function(err) {
         if (!err) console.log("Created empty reports list.");
-        reports = require("./json/reports.json");
+        reports = require(__dirname + "/json/reports.json");
     });
 };
-exports.bonziAccounts = require("./json/accounts.json");
+exports.bonziAccounts = require(__dirname + "/json/accounts.json");
 exports.saveBans = function() {
 	fs.writeFile(
-		"./json/bans.json",
+		__dirname + "/json/bans.json",
 		JSON.stringify(bans),
 		{ flag: 'w' },
 		function(error) {
@@ -80,7 +85,7 @@ exports.saveBans = function() {
 };
 /*exports.saveRooms = function() {
 	fs.writeFile(
-		"./json/rooms.json",
+		__dirname + "/json/rooms.json",
 		JSON.stringify(rooms),
 		{ flag: 'w' },
 		function(error) {
@@ -92,7 +97,7 @@ exports.saveBans = function() {
 };*/
 exports.saveAccounts = function() {
 	fs.writeFile(
-		"./json/accounts.json",
+		__dirname + "/json/accounts.json",
 		JSON.stringify(accounts),
 		{ flag: 'w' },
 		function(error) {
@@ -104,7 +109,7 @@ exports.saveAccounts = function() {
 };
 exports.saveHardwareBans = function() {
 	fs.writeFile(
-		"./json/hardware_bans.json",
+		__dirname + "/json/hardware_bans.json",
 		JSON.stringify(hardwarebans),
 		{ flag: 'w' },
 		function(error) {
@@ -117,20 +122,20 @@ exports.saveHardwareBans = function() {
 
 exports.saveLogins = function() {
 	fs.writeFile(
-		"./json/logins.json",
+		__dirname + "/json/logins.json",
 		JSON.stringify(logins)
 	);
 };
 exports.saveReport = function() {
 	fs.writeFile(
-		"./json/reports.json",
+		__dirname + "/json/reports.json",
 		JSON.stringify(reports)
 	);
 };
 
 exports.saveMutes = function() {
 	fs.writeFile(
-		"./json/mutes.json",
+		__dirname + "/json/mutes.json",
 		JSON.stringify(mutes),
 		{ flag: 'w' },
 		function(error) {
